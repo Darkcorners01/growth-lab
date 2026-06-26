@@ -1,0 +1,308 @@
+*{
+    -webkit-tap-highlight-color: transparent;
+}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(
+135deg,
+#f8f9fb,
+#eef2f7,
+#ffffff
+);
+background-size:400% 400%;
+animation:bgFlow 15s ease infinite;
+color:#111;
+overflow-x:hidden;
+}
+/* Remove blue underlines from buttons inside links */
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+#contact a,
+#payment a{
+    text-decoration:none;
+    color:inherit;
+}
+
+@keyframes bgFlow{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* Floating Background */
+
+.blobs{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
+overflow:hidden;
+}
+
+.blobs span{
+position:absolute;
+width:320px;
+height:320px;
+border-radius:50%;
+background:rgba(0,0,0,0.05);
+filter:blur(70px);
+animation:floatBlob 20s infinite ease-in-out;
+}
+
+.blobs span:nth-child(1){
+top:10%;
+left:10%;
+}
+
+.blobs span:nth-child(2){
+top:60%;
+left:70%;
+animation-duration:25s;
+}
+
+.blobs span:nth-child(3){
+top:40%;
+left:40%;
+animation-duration:22s;
+}
+
+@keyframes floatBlob{
+0%{
+transform:translate(0,0) scale(1);
+}
+50%{
+transform:translate(80px,-60px) scale(1.2);
+}
+100%{
+transform:translate(0,0) scale(1);
+}
+}
+
+/* Navbar */
+
+nav{
+position:fixed;
+top:15px;
+left:50%;
+transform:translateX(-50%);
+width:90%;
+max-width:1000px;
+padding:16px 20px;
+border-radius:20px;
+background:rgba(255,255,255,0.55);
+backdrop-filter:blur(5px);
+-webkit-backdrop-filter:blur(5px);
+border:1px solid rgba(255,255,255,0.4);
+box-shadow:0 8px 32px rgba(0,0,0,0.08);
+z-index:1000;
+text-align:center;
+}
+
+.logo{
+font-size:24px;
+font-weight:700;
+letter-spacing:2px;
+}
+
+/* Hero */
+
+.hero{
+height:80vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:50px;
+}
+
+.hero h1{
+font-size:clamp(60px,10vw,95px);
+font-weight:800;
+letter-spacing:-2px;
+background:linear-gradient(
+90deg,
+#000,
+#444,
+#888,
+#000
+);
+background-size:300% 300%;
+animation:bgFlow 8s linear infinite;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:20px;
+max-width:650px;
+color:#555;
+margin-bottom:30px;
+line-height:1.6;
+}
+
+/* Buttons */
+
+button{
+padding:15px 32px;
+border-radius:18px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(24px);
+-webkit-backdrop-filter:blur(24px);
+border:1px solid rgba(255,255,255,0.25);
+color:#111;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+box-shadow:
+0 8px 25px rgba(0,0,0,0.08),
+inset 0 1px 0 rgba(255,255,255,0.3);
+transition:all .3s ease;
+}
+
+button:hover{
+transform:translateY(-4px) scale(1.03);
+background:rgba(255,255,255,0.25);
+box-shadow:
+0 12px 35px rgba(0,0,0,0.12),
+inset 0 1px 0 rgba(255,255,255,0.45);
+}
+
+/* Sections */
+
+section{
+padding:30px 20px;
+opacity:0;
+transform:translateY(30px);
+transition:1s ease;
+}
+
+section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+h2{
+text-align:center;
+font-size:30px;
+margin-bottom:10px;
+}
+
+/* Cards */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+max-width:1000px;
+margin:auto;
+}
+
+.card{
+background:rgba(255,255,255,0.55);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.4);
+padding:20px;
+border-radius:20px;
+box-shadow:0 8px 32px rgba(0,0,0,0.08);
+transition:0.4s ease;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.03);
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.card p{
+color:#555;
+}
+
+/* Payment */
+
+.payment-card{
+max-width:450px;
+margin:auto;
+background:rgba(255,255,255,0.55);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.4);
+padding:30px;
+border-radius:28px;
+box-shadow:0 8px 32px rgba(0,0,0,0.08);
+text-align:center;
+}
+
+.qr{
+width:250px;
+max-width:100%;
+border-radius:20px;
+margin-bottom:20px;
+}
+
+.pay-text{
+color:#555;
+margin:10px 0;
+line-height:1.6;
+}
+
+/* Contact */
+
+#contact{
+text-align:center;
+}
+
+#contact a{
+display:flex;
+justify-content:center;
+}
+
+/* Footer */
+
+footer{
+padding:5px;
+text-align:center;
+color:#777;
+border-top:1px solid rgba(0,0,0,0.05);
+}
+#contact{
+    text-align:center;
+    margin-bottom:15px;
+}
+.hero{
+    min-height:70vh;
+}
+
+#services{
+    margin-top:-80px;
+}
+.trust-text{
+    text-align:center;
+    color:#666;
+    font-size:20px;
+    margin:50px 20px;
+}
+.trust-text{
+    margin-top:-20px;
+}
+.trust-text{
+    text-align:center;
+    color:#666;
+    font-size:18px;
+    line-height:1.6;
+    margin:0 20px 10px;
+}
