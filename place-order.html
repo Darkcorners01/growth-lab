@@ -540,13 +540,9 @@ orderID
 
 
 
-alert(
-"Order placed successfully 🚀\nOrder ID: " + orderID
-);
+localStorage.setItem("orderID", orderID);
 
-
-
-window.location.href="track.html";
+window.location.href="order-success.html";
 
 
 }
