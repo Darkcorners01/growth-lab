@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Growth Lab Admin</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+}
+
+body{
+
+min-height:100vh;
+
+background:linear-gradient(135deg,#0f0f10,#181818,#101114);
+
+color:white;
+
+padding:20px;
+
+}
+
+
+.container{
+
+max-width:900px;
+
+margin:auto;
+
+}
+
+
+h1{
+
+text-align:center;
+
+margin-bottom:30px;
+
+}
+
+
+
+.order-card{
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.12);
+
+border-radius:25px;
+
+padding:25px;
+
+margin-bottom:20px;
+
+}
+
+
+
+.order-card p{
+
+margin:10px 0;
+
+color:#ddd;
+
+}
+
+
+
+.status{
+
+color:#fff;
+
+font-weight:700;
+
+}
+
+
+
+.logout{
+
+display:block;
+
+margin:30px auto;
+
+text-align:center;
+
+color:#aaa;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>
+Growth Lab Admin 🛠️
+</h1>
+
+
+<div id="orders">
+
+Loading orders...
+
+</div>
+
+
+<a class="logout" href="dashboard.html">
+← Dashboard
+</a>
+
+
+</div>
+
+
+
+
+
+<script type="module">
+
+
+import { initializeApp }
+
+from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+
+
+
+import {
+
+getAuth,
+
+onAuthStateChanged
+
+}
+
+from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+
+
+import {
+
+getFirestore,
+
+collection,
+
+getDocs
+
+}
+
+from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+
+
+
+
+const firebaseConfig = {
+
+apiKey:"AIzaSyCG1VbOlKKc_bcBgnYqXptjjPFQj5HRRqQ",
+
+authDomain:"growth-lab-001.firebaseapp.com",
+
+projectId:"growth-lab-001",
+
+storageBucket:"growth-lab-001.firebasestorage.app",
+
+messagingSenderId:"1056072903285",
+
+appId:"1:1056072903285:web:0d8803782792362b56a63c",
+
+measurementId:"G-91ZPNR8HL4"
+
+};
+
+
+
+
+
+const app = initializeApp(firebaseConfig);
+
+
+const auth = getAuth(app);
+
+
+const db = getFirestore(app);
+
+
+
+
+
+const adminEmail = "banerjeeswapnadip192@gmail.com";
+
+
+
+
+
+
+onAuthStateChanged(auth,(user)=>{
+
+
+if(!user || user.email !== adminEmail){
+
+
+alert("Access denied");
+
+
+window.location.href="login.html";
+
+
+}
+
+else{
+
+
+loadOrders();
+
+
+}
+
+
+});
+
+
+
+
+
+
+
+async function loadOrders(){
+
+
+const box =
+document.getElementById("orders");
+
+
+
+box.innerHTML="";
+
+
+
+const snapshot =
+await getDocs(collection(db,"orders"));
+
+
+
+if(snapshot.empty){
+
+
+box.innerHTML="No orders yet";
+
+
+return;
+
+
+}
+
+
+
+
+
+snapshot.forEach((doc)=>{
+
+
+const data = doc.data();
+
+
+
+
+box.innerHTML += `
+
+
+<div class="order-card">
+
+
+<p>
+<b>Order ID:</b> ${data.orderID}
+</p>
+
+
+<p>
+<b>Username:</b> ${data.username}
+</p>
+
+
+<p>
+<b>Service:</b> ${data.service}
+</p>
+
+
+<p>
+<b>Package:</b> ${data.package}
+</p>
+
+
+<p class="status">
+Status: ${data.status}
+</p>
+
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+
+}
+
+
+
+</script>
+
+
+</body>
+
+</html>
