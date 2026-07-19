@@ -8,7 +8,6 @@
 
 <title>Place New Order | Growth Lab</title>
 
-
 <style>
 
 *{
@@ -18,7 +17,6 @@
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
     -webkit-tap-highlight-color:transparent;
 }
-
 
 body{
 
@@ -39,26 +37,16 @@ body{
     align-items:center;
 
     padding:20px;
-
 }
 
 
 @keyframes bgFlow{
 
-0%{
-background-position:0% 50%;
-}
-
-50%{
-background-position:100% 50%;
-}
-
-100%{
-background-position:0% 50%;
-}
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 
 }
-
 
 
 .container{
@@ -78,7 +66,6 @@ background-position:0% 50%;
     border-radius:28px;
 
 }
-
 
 
 h1{
@@ -103,7 +90,6 @@ h1{
 }
 
 
-
 label{
 
     display:block;
@@ -113,7 +99,6 @@ label{
     font-weight:600;
 
 }
-
 
 
 input,
@@ -138,13 +123,11 @@ select{
 }
 
 
-
 input::placeholder{
 
     color:#aaa;
 
 }
-
 
 
 select option{
@@ -154,7 +137,6 @@ select option{
     color:white;
 
 }
-
 
 
 button{
@@ -182,13 +164,11 @@ button{
 }
 
 
-
 button:hover{
 
     opacity:.85;
 
 }
-
 
 
 .back{
@@ -208,10 +188,7 @@ button:hover{
 
 }
 
-
-
 </style>
-
 
 </head>
 
@@ -223,7 +200,7 @@ button:hover{
 
 
 <h1>
-Place New Order 🚀
+Place New Order
 </h1>
 
 
@@ -245,8 +222,6 @@ placeholder="@username">
 
 
 
-
-
 <label>
 Select Service
 </label>
@@ -258,25 +233,19 @@ Select Service
 Choose Service
 </option>
 
-
-<option value="Followers">
+<option value="Followers 📈">
 Followers 📈
 </option>
 
-
-<option value="Views">
+<option value="Views 👁️">
 Views 👁️
 </option>
 
-
-<option value="Likes">
+<option value="Likes ❤️">
 Likes ❤️
 </option>
 
-
 </select>
-
-
 
 
 
@@ -291,10 +260,7 @@ Select Package
 Select Package
 </option>
 
-
 </select>
-
-
 
 
 
@@ -306,14 +272,10 @@ Submit Order 🚀
 
 
 
-
-
 <div class="back">
 
 <a href="dashboard.html">
-
 ← Back to Dashboard
-
 </a>
 
 </div>
@@ -323,16 +285,13 @@ Submit Order 🚀
 
 
 
-
-
-
 <script>
 
 
 const packages = {
 
 
-Followers:[
+"Followers 📈":[
 
 "10 Followers | ₹2 (Demo)",
 
@@ -347,8 +306,7 @@ Followers:[
 ],
 
 
-
-Views:[
+"Views 👁️":[
 
 "100 Views | ₹2 (Demo)",
 
@@ -363,8 +321,7 @@ Views:[
 ],
 
 
-
-Likes:[
+"Likes ❤️":[
 
 "100 Likes | ₹5 (Demo)",
 
@@ -383,10 +340,7 @@ Likes:[
 
 
 
-
-
 function updatePackages(){
-
 
 let service =
 document.getElementById("service").value;
@@ -394,7 +348,6 @@ document.getElementById("service").value;
 
 let packageBox =
 document.getElementById("package");
-
 
 
 packageBox.innerHTML =
@@ -423,10 +376,7 @@ packageBox.appendChild(option);
 
 }
 
-
 }
-
-
 
 
 
@@ -454,18 +404,12 @@ alert("Please fill all details");
 
 return;
 
-
 }
 
 
 
-
-
 let formURL =
-
 "https://docs.google.com/forms/d/e/1FAIpQLSf6UXG6zSJKB1rBUXnJ-4YYv8AWhf0ADEf9ckW0TIGRWSF0Cg/formResponse";
-
-
 
 
 
@@ -473,17 +417,9 @@ let formData = new FormData();
 
 
 
-
 formData.append(
 "entry.904217290",
 username
-);
-
-
-
-formData.append(
-"entry.497299402",
-"Instagram"
 );
 
 
@@ -502,9 +438,6 @@ packageName
 
 
 
-
-
-
 fetch(formURL,{
 
 method:"POST",
@@ -517,21 +450,16 @@ body:formData
 
 
 
-
-
 alert("Order placed successfully 🚀");
 
 
-
 window.location.href="track.html";
-
 
 
 }
 
 
 </script>
-
 
 
 </body>
