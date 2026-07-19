@@ -8,42 +8,77 @@
 
 <title>Place New Order | Growth Lab</title>
 
+
 <style>
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    -webkit-tap-highlight-color:transparent;
 }
+
 
 body{
 
     min-height:100vh;
-    background:#f5f5f7;
+
+    background:linear-gradient(135deg,#0f0f10,#181818,#101114);
+
+    background-size:400% 400%;
+
+    animation:bgFlow 15s ease infinite;
+
+    color:white;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
+    padding:20px;
 
 }
 
 
+@keyframes bgFlow{
+
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
+
+
+
 .container{
 
-    width:90%;
+    width:100%;
+
     max-width:430px;
 
-    background:white;
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.12);
 
     padding:30px;
 
     border-radius:28px;
 
-    box-shadow:
-    0 20px 50px rgba(0,0,0,.08);
-
 }
+
 
 
 h1{
@@ -57,11 +92,12 @@ h1{
 }
 
 
+
 .subtitle{
 
     text-align:center;
 
-    color:#777;
+    color:#bbb;
 
     margin-bottom:25px;
 
@@ -90,11 +126,33 @@ select{
 
     border-radius:15px;
 
-    border:1px solid #ddd;
+    border:1px solid rgba(255,255,255,.15);
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
 
     outline:none;
 
     font-size:15px;
+
+}
+
+
+
+input::placeholder{
+
+    color:#aaa;
+
+}
+
+
+
+select option{
+
+    background:#111;
+
+    color:white;
 
 }
 
@@ -112,15 +170,15 @@ button{
 
     border-radius:25px;
 
-    background:#111;
+    background:white;
 
-    color:white;
+    color:#111;
 
     font-size:16px;
 
-    cursor:pointer;
+    font-weight:600;
 
-    -webkit-tap-highlight-color:transparent;
+    cursor:pointer;
 
 }
 
@@ -143,11 +201,12 @@ button:hover{
 }
 
 
+
 .back a{
 
-    text-decoration:none;
+    color:#bbb;
 
-    color:#555;
+    text-decoration:none;
 
 }
 
@@ -181,12 +240,10 @@ Instagram Username / Link
 </label>
 
 
-<input 
+<input
 id="username"
 type="text"
 placeholder="@username">
-
-
 
 
 
@@ -197,21 +254,17 @@ Select Service
 
 <select id="service" onchange="updatePackages()">
 
-
 <option value="">
 Choose Service
 </option>
-
 
 <option value="Followers 📈">
 Followers 📈
 </option>
 
-
 <option value="Views 👁️">
 Views 👁️
 </option>
-
 
 <option value="Likes ❤️">
 Likes ❤️
@@ -223,7 +276,6 @@ Likes ❤️
 
 
 
-
 <label>
 Select Package
 </label>
@@ -231,14 +283,12 @@ Select Package
 
 <select id="package">
 
-
 <option>
 Select Package
 </option>
 
 
 </select>
-
 
 
 
@@ -251,87 +301,51 @@ Submit Order 🚀
 
 
 
-
-
 <div class="back">
 
 <a href="dashboard.html">
-
 ← Back to Dashboard
-
 </a>
 
 </div>
 
 
-
 </div>
-
-
-
 
 
 <script>
 
-
 const packages = {
 
-
 "Followers 📈":[
-
 "10 Followers | ₹2 (Demo)",
-
 "100 Followers | ₹19",
-
 "500 Followers | ₹79",
-
 "1000 Followers | ₹149",
-
 "5000 Followers | ₹799"
-
 ],
-
-
 
 "Views 👁️":[
-
 "100 Views | ₹2 (Demo)",
-
 "1000 Views | ₹9",
-
 "10,000 Views | ₹50",
-
 "100,000 Views | ₹69",
-
 "1,000,000 Views | ₹699"
-
 ],
 
-
-
 "Likes ❤️":[
-
 "100 Likes | ₹5 (Demo)",
-
 "500 Likes | ₹29",
-
 "1000 Likes | ₹49",
-
 "5000 Likes | ₹149",
-
 "10,000 Likes"
-
 ]
-
 
 };
 
 
 
-
-
 function updatePackages(){
-
 
 let service =
 document.getElementById("service").value;
@@ -341,10 +355,8 @@ let packageBox =
 document.getElementById("package");
 
 
-
 packageBox.innerHTML =
 "<option>Select Package</option>";
-
 
 
 if(packages[service]){
@@ -368,20 +380,15 @@ packageBox.appendChild(option);
 
 }
 
-
 }
-
-
-
 
 
 
 
 function submitOrder(){
 
-
 let username =
-document.getElementById("username").value;
+document.getElementById("username").value.trim();
 
 
 let service =
@@ -393,27 +400,18 @@ document.getElementById("package").value;
 
 
 
-
 if(username=="" || service=="" || packageName=="Select Package"){
-
 
 alert("Please fill all details");
 
-
 return;
-
 
 }
 
 
 
-
-
 let formURL =
-
 "https://docs.google.com/forms/d/e/1FAIpQLSf6UXG6zSJKB1rBUXnJ-4YYv8AWhf0ADEf9ckW0TIGRWSF0Cg/formResponse";
-
-
 
 
 
@@ -421,47 +419,28 @@ let formData = new FormData();
 
 
 
-
 formData.append(
-
 "entry.904217290",
-
 username
-
 );
 
 
-
 formData.append(
-
 "entry.497299402",
-
 "Instagram"
-
 );
 
 
-
 formData.append(
-
 "entry.1565986802",
-
 service
-
 );
-
 
 
 formData.append(
-
 "entry.368172193",
-
 packageName
-
 );
-
-
-
 
 
 
@@ -477,9 +456,6 @@ body:formData
 
 
 
-
-
-
 alert("Order placed successfully 🚀");
 
 
@@ -487,13 +463,11 @@ alert("Order placed successfully 🚀");
 window.location.href="track.html";
 
 
-
 }
 
 
 
 </script>
-
 
 
 </body>
