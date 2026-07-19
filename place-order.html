@@ -516,6 +516,13 @@ const orderID =
 
 const user = auth.currentUser;
 
+console.log(user);
+
+if (!user) {
+    alert("No user is logged in!");
+    return;
+}
+
 await addDoc(collection(db,"orders"),{
 
 uid: user.uid,
