@@ -19,9 +19,23 @@
 <nav>
     <div class="logo">GROWTH LAB</div>
 
-    <a href="login.html" class="login-btn">
+    <a href="login.html" class="login-btn" id="loginBtn">
         Login
     </a>
+
+    <a href="dashboard.html" id="profileBtn" style="display:none;">
+        <img id="profilePic"
+             src="https://via.placeholder.com/45"
+             alt="Profile"
+             style="
+                width:45px;
+                height:45px;
+                border-radius:50%;
+                object-fit:cover;
+                border:2px solid rgba(255,255,255,.2);
+             ">
+    </a>
+
 </nav>
 
 <section class="hero reveal">
@@ -96,6 +110,54 @@ DM @growth.lab07 on Instagram
 <footer>
     © 2026 Growth Lab
 </footer>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+
+import {
+getAuth,
+onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+const firebaseConfig = {
+apiKey:"AIzaSyCG1VbOlKKc_bcBgnYqXptjjPFQj5HRRqQ",
+authDomain:"growth-lab-001.firebaseapp.com",
+projectId:"growth-lab-001",
+storageBucket:"growth-lab-001.firebasestorage.app",
+messagingSenderId:"1056072903285",
+appId:"1:1056072903285:web:0d8803782792362b56a63c",
+measurementId:"G-91ZPNR8HL4"
+};
+
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+
+const loginBtn=document.getElementById("loginBtn");
+const profileBtn=document.getElementById("profileBtn");
+const profilePic=document.getElementById("profilePic");
+
+onAuthStateChanged(auth,(user)=>{
+
+if(user){
+
+loginBtn.style.display="none";
+profileBtn.style.display="block";
+
+if(user.photoURL){
+profilePic.src=user.photoURL;
+}
+
+}else{
+
+loginBtn.style.display="block";
+profileBtn.style.display="none";
+
+}
+
+});
+
+</script>
 
 <script src="script.js"></script>
   
