@@ -94,6 +94,231 @@ button{
 .back:hover{
     color:#fff;
 }
+/* LOGIN PAGE PREMIUM TRANSITION */
+
+body{
+    overflow:hidden;
+    animation:bgAppear .8s ease;
+}
+
+
+@keyframes bgAppear{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+
+/* CARD ENTRANCE */
+
+.login-card{
+
+    animation:
+    loginReveal .8s cubic-bezier(.22,1,.36,1),
+    cardFloat 4s ease-in-out infinite;
+
+}
+
+
+
+@keyframes loginReveal{
+
+    from{
+
+        opacity:0;
+        transform:translateY(60px) scale(.9);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0) scale(1);
+
+    }
+
+}
+
+
+
+/* SUBTLE FLOATING EFFECT */
+
+@keyframes cardFloat{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-6px);
+
+    }
+
+}
+
+
+
+/* TITLE ANIMATION */
+
+.login-card h2{
+
+    animation:titleShow .9s ease;
+
+}
+
+
+
+@keyframes titleShow{
+
+    from{
+
+        opacity:0;
+        transform:translateY(-20px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+/* INPUT STAGGER */
+
+.login-card input{
+
+    animation:inputShow .7s ease backwards;
+
+}
+
+
+.login-card input:nth-child(2){
+
+    animation-delay:.15s;
+
+}
+
+
+.login-card input:nth-child(3){
+
+    animation-delay:.3s;
+
+}
+
+
+
+@keyframes inputShow{
+
+    from{
+
+        opacity:0;
+        transform:translateX(-25px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateX(0);
+
+    }
+
+}
+
+
+
+/* INPUT FOCUS */
+
+.login-card input:focus{
+
+    border-color:#fff;
+
+    transform:translateY(-3px);
+
+    box-shadow:0 0 20px rgba(255,255,255,.15);
+
+}
+
+
+
+/* GOOGLE BUTTON */
+
+.google-btn{
+
+    transition:.3s ease;
+
+    animation:buttonShow .8s ease backwards;
+
+    animation-delay:.45s;
+
+}
+
+
+
+.google-btn:hover{
+
+    transform:translateY(-3px);
+
+    background:#333;
+
+}
+
+
+
+.google-btn:active{
+
+    transform:scale(.94);
+
+}
+
+
+
+@keyframes buttonShow{
+
+    from{
+
+        opacity:0;
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+/* BACK LINK */
+
+.back{
+
+    transition:.3s ease;
+
+    animation:buttonShow .8s ease backwards;
+
+    animation-delay:.6s;
+
+}
+  
 </style>
 
 </head>

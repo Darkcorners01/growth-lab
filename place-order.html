@@ -196,7 +196,124 @@ text-decoration:none;
 
 }
 
+/* PAGE ENTER ANIMATION */
 
+.container{
+    animation:pageEnter .8s ease;
+}
+
+
+@keyframes pageEnter{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* FORM CARD ANIMATION */
+
+.form-card,
+.card,
+.order-box{
+    animation:cardPop .7s ease;
+}
+
+
+@keyframes cardPop{
+
+    from{
+        opacity:0;
+        transform:scale(.95) translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+
+}
+
+
+/* INPUT FOCUS EFFECT */
+
+input,
+select,
+textarea{
+
+    transition:.3s ease;
+
+}
+
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 0 20px rgba(255,255,255,.15);
+
+}
+
+
+
+/* BUTTON ANIMATION */
+
+button,
+.submit-btn{
+
+    transition:.3s ease;
+
+}
+
+
+button:hover,
+.submit-btn:hover{
+
+    transform:translateY(-4px);
+
+}
+
+
+button:active,
+.submit-btn:active{
+
+    transform:scale(.95);
+
+}
+
+
+
+/* ORDER ICON / HEADER GLOW */
+
+.logo,
+.order-icon{
+
+    animation:softGlow 5s infinite;
+
+}
+
+
+@keyframes softGlow{
+
+    0%,100%{
+        filter:drop-shadow(0 0 0 transparent);
+    }
+
+    50%{
+        filter:drop-shadow(0 0 12px rgba(255,255,255,.35));
+    }
+
+}
+  
 </style>
 
 </head>

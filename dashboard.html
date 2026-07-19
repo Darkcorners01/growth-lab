@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Growth Lab Dashboard</title>
+
 
 <style>
 
@@ -16,14 +19,23 @@
     -webkit-tap-highlight-color:transparent;
 }
 
+
 body{
+
     background:linear-gradient(135deg,#0f0f10,#181818,#101114);
+
     background-size:400% 400%;
+
     animation:bgFlow 15s ease infinite;
+
     color:#fff;
+
     min-height:100vh;
+
     padding:20px;
+
 }
+
 
 
 @keyframes bgFlow{
@@ -43,66 +55,177 @@ body{
 }
 
 
+
 .container{
+
     max-width:450px;
+
     margin:auto;
+
+    animation:pageEnter .8s ease;
+
 }
+
+
+
+@keyframes pageEnter{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+/* HEADER */
 
 
 .header{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     margin-bottom:30px;
+
 }
+
 
 
 .logo{
+
     font-size:28px;
+
     font-weight:700;
+
 }
+
+
+
+/* USER PROFILE IMAGE */
 
 
 .profile{
+
     width:45px;
+
     height:45px;
+
     border-radius:50%;
+
     background:rgba(255,255,255,.12);
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
-    font-size:22px;
+
+    overflow:hidden;
+
+    animation:pulse 2s infinite;
+
 }
 
 
+
+.profile img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+}
+
+
+
+
+@keyframes pulse{
+
+    0%,100%{
+
+        box-shadow:0 0 0 rgba(255,255,255,0);
+
+    }
+
+
+    50%{
+
+        box-shadow:0 0 25px rgba(255,255,255,.25);
+
+    }
+
+}
+
+
+
+
+/* WELCOME */
+
+
 .welcome{
+
     margin-bottom:35px;
+
 }
 
 
 .welcome h2{
+
     font-size:32px;
+
 }
 
 
 .welcome p{
+
     color:#bbb;
+
     margin-top:5px;
+
 }
+
 
 
 /* QUICK ACTIONS */
 
+
 .section-title{
+
     margin:20px 0 15px;
+
     font-size:22px;
+
 }
+
 
 
 .action{
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     padding:18px 20px;
@@ -123,7 +246,10 @@ body{
 
     transition:.3s;
 
+    animation:cardAppear .6s ease backwards;
+
 }
+
 
 
 .action:hover{
@@ -135,8 +261,66 @@ body{
 }
 
 
-/* LOGOUT */
 
+.action:active{
+
+    transform:scale(.96);
+
+}
+
+
+
+.action:nth-of-type(1){
+
+    animation-delay:.1s;
+
+}
+
+
+.action:nth-of-type(2){
+
+    animation-delay:.2s;
+
+}
+
+
+.action:nth-of-type(3){
+
+    animation-delay:.3s;
+
+}
+
+
+.action:nth-of-type(4){
+
+    animation-delay:.4s;
+
+}
+
+
+
+@keyframes cardAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-20px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/* LOGOUT */
 
 .logout{
 
@@ -178,6 +362,7 @@ body{
 
 </head>
 
+
 <body>
 
 
@@ -186,13 +371,16 @@ body{
 
 <div class="header">
 
+
 <div class="logo">
 Growth Lab
 </div>
 
 
 <div class="profile">
-👤
+
+<img id="userPhoto" src="" alt="Profile">
+
 </div>
 
 
@@ -206,9 +394,11 @@ Growth Lab
 Welcome Back 👋
 </h2>
 
+
 <p>
 Manage your social growth from one place.
 </p>
+
 
 </div>
 
@@ -275,8 +465,12 @@ Quick Actions
 </a>
 
 
+
+
 <a href="#" id="logoutBtn" class="logout">
+
 Logout
+
 </a>
 
 
@@ -285,30 +479,45 @@ Logout
 
 
 
+
 <script type="module">
 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 
-import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+import { 
+getAuth,
+signOut,
+onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
 
 
 
 const firebaseConfig = {
 
+
 apiKey:"AIzaSyCG1VbOlKKc_bcBgnYqXptjjPFQj5HRRqQ",
+
 
 authDomain:"growth-lab-001.firebaseapp.com",
 
+
 projectId:"growth-lab-001",
+
 
 storageBucket:"growth-lab-001.firebasestorage.app",
 
+
 messagingSenderId:"1056072903285",
+
 
 appId:"1:1056072903285:web:0d8803782792362b56a63c",
 
+
 measurementId:"G-91ZPNR8HL4"
+
 
 };
 
@@ -316,7 +525,42 @@ measurementId:"G-91ZPNR8HL4"
 
 const app = initializeApp(firebaseConfig);
 
+
 const auth = getAuth(app);
+
+
+
+
+const userPhoto = document.getElementById("userPhoto");
+
+
+
+onAuthStateChanged(auth,(user)=>{
+
+
+if(user){
+
+
+    if(user.photoURL){
+
+        userPhoto.src = user.photoURL;
+
+    }
+
+    else{
+
+        userPhoto.src =
+        "https://ui-avatars.com/api/?name=User";
+
+    }
+
+
+}
+
+
+});
+
+
 
 
 
@@ -326,6 +570,7 @@ document.getElementById("logoutBtn").addEventListener("click", async(e)=>{
 e.preventDefault();
 
 
+
 try{
 
 
@@ -333,6 +578,7 @@ await signOut(auth);
 
 
 window.location.href="login.html";
+
 
 
 }
@@ -346,7 +592,9 @@ alert("Logout failed: "+error.message);
 }
 
 
+
 });
+
 
 
 </script>
