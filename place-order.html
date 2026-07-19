@@ -11,79 +11,84 @@
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    -webkit-tap-highlight-color:transparent;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+-webkit-tap-highlight-color:transparent;
 }
+
 
 body{
 
-    min-height:100vh;
+min-height:100vh;
 
-    background:linear-gradient(135deg,#0f0f10,#181818,#101114);
+background:linear-gradient(135deg,#0f0f10,#181818,#101114);
 
-    background-size:400% 400%;
+background-size:400% 400%;
 
-    animation:bgFlow 15s ease infinite;
+animation:bgFlow 15s ease infinite;
 
-    color:white;
+color:white;
 
-    display:flex;
+display:flex;
 
-    justify-content:center;
+justify-content:center;
 
-    align-items:center;
+align-items:center;
 
-    padding:20px;
+padding:20px;
 
 }
 
 
 @keyframes bgFlow{
 
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+0%{background-position:0% 50%}
+
+50%{background-position:100% 50%}
+
+100%{background-position:0% 50%}
 
 }
-
 
 
 .container{
 
-    width:100%;
-    max-width:430px;
+width:100%;
 
-    background:rgba(255,255,255,.08);
+max-width:430px;
 
-    backdrop-filter:blur(20px);
+background:rgba(255,255,255,.08);
 
-    border:1px solid rgba(255,255,255,.12);
+backdrop-filter:blur(20px);
 
-    padding:30px;
+border:1px solid rgba(255,255,255,.12);
 
-    border-radius:28px;
+padding:30px;
+
+border-radius:28px;
 
 }
-
 
 
 h1{
 
 text-align:center;
+
 font-size:28px;
+
 margin-bottom:10px;
 
 }
 
 
-
 .subtitle{
 
 text-align:center;
+
 color:#bbb;
+
 margin-bottom:25px;
 
 }
@@ -93,7 +98,9 @@ margin-bottom:25px;
 label{
 
 display:block;
+
 margin:15px 0 8px;
+
 font-weight:600;
 
 }
@@ -126,6 +133,7 @@ font-size:15px;
 select option{
 
 background:#111;
+
 color:white;
 
 }
@@ -150,12 +158,11 @@ color:#111;
 
 font-size:16px;
 
-font-weight:600;
+font-weight:700;
 
 cursor:pointer;
 
 }
-
 
 
 .back{
@@ -165,7 +172,6 @@ text-align:center;
 margin-top:20px;
 
 }
-
 
 
 .back a{
@@ -203,7 +209,12 @@ Instagram Growth Services
 Instagram Username / Link
 </label>
 
-<input id="username" type="text" placeholder="@username">
+<input 
+id="username"
+type="text"
+placeholder="@username">
+
+
 
 
 
@@ -211,17 +222,28 @@ Instagram Username / Link
 Select Service
 </label>
 
+
 <select id="service" onchange="updatePackages()">
 
-<option value="">Choose Service</option>
+<option value="">
+Choose Service
+</option>
 
-<option value="Followers 📈">Followers 📈</option>
+<option value="Followers 📈">
+Followers 📈
+</option>
 
-<option value="Views 👁️">Views 👁️</option>
+<option value="Views 👁️">
+Views 👁️
+</option>
 
-<option value="Likes ❤️">Likes ❤️</option>
+<option value="Likes ❤️">
+Likes ❤️
+</option>
 
 </select>
+
+
 
 
 
@@ -229,11 +251,16 @@ Select Service
 Select Package
 </label>
 
+
 <select id="package">
 
-<option>Select Package</option>
+<option>
+Select Package
+</option>
 
 </select>
+
+
 
 
 
@@ -258,41 +285,62 @@ Submit Order 🚀
 
 
 
+
+
 <script type="module">
 
 
-import { initializeApp } 
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { initializeApp }
+
+from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 
 
-import { getFirestore, collection, addDoc, serverTimestamp }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {
+
+getFirestore,
+
+collection,
+
+addDoc,
+
+serverTimestamp
+
+}
+
+from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+
 
 
 
 const firebaseConfig = {
 
-apiKey: "AIzaSyCG1VbOlKKc_bcBgnYqXptjjPFQj5HRRqQ",
 
-authDomain: "growth-lab-001.firebaseapp.com",
+apiKey:"AIzaSyCG1VbOlKKc_bcBgnYqXptjjPFQj5HRRqQ",
 
-projectId: "growth-lab-001",
+authDomain:"growth-lab-001.firebaseapp.com",
 
-storageBucket: "growth-lab-001.firebasestorage.app",
+projectId:"growth-lab-001",
 
-messagingSenderId: "1056072903285",
+storageBucket:"growth-lab-001.firebasestorage.app",
 
-appId: "1:1056072903285:web:0d8803782792362b56a63c",
+messagingSenderId:"1056072903285",
 
-measurementId: "G-91ZPNR8HL4"
+appId:"1:1056072903285:web:0d8803782792362b56a63c",
+
+measurementId:"G-91ZPNR8HL4"
 
 };
 
 
 
+
+
 const app = initializeApp(firebaseConfig);
 
+
 const db = getFirestore(app);
+
 
 
 
@@ -354,20 +402,18 @@ const packages = {
 
 
 
-window.updatePackages = function(){
 
 
-let service =
-document.getElementById("service").value;
+window.updatePackages=function(){
 
 
-let packageBox =
-document.getElementById("package");
+let service=document.getElementById("service").value;
 
 
+let box=document.getElementById("package");
 
-packageBox.innerHTML =
-"<option>Select Package</option>";
+
+box.innerHTML="<option>Select Package</option>";
 
 
 
@@ -379,9 +425,11 @@ packages[service].forEach(item=>{
 
 let option=document.createElement("option");
 
+
 option.textContent=item;
 
-packageBox.appendChild(option);
+
+box.appendChild(option);
 
 
 });
@@ -397,19 +445,20 @@ packageBox.appendChild(option);
 
 
 
-window.submitOrder = async function(){
 
 
-let username =
-document.getElementById("username").value.trim();
+window.submitOrder=async function(){
 
 
-let service =
-document.getElementById("service").value;
+
+let username=document.getElementById("username").value.trim();
 
 
-let packageName =
-document.getElementById("package").value;
+let service=document.getElementById("service").value;
+
+
+let packageName=document.getElementById("package").value;
+
 
 
 
@@ -420,45 +469,63 @@ alert("Please fill all details");
 
 return;
 
+
 }
+
 
 
 
 try{
 
 
-await addDoc(collection(db,"orders"),{
+const orderRef = await addDoc(collection(db,"orders"),{
 
 
-username: username,
+username:username,
 
-service: service,
+service:service,
 
-package: packageName,
+package:packageName,
 
 status:"Processing",
 
-createdAt: serverTimestamp()
-
+createdAt:serverTimestamp()
 
 });
 
 
 
-alert("Order placed successfully 🚀");
+
+
+localStorage.setItem(
+"orderID",
+orderRef.id
+);
+
+
+
+
+
+alert(
+"Order placed successfully 🚀\nOrder ID: "+orderRef.id
+);
+
 
 
 window.location.href="track.html";
 
 
+
 }
+
 
 catch(error){
 
 
 console.log(error);
 
-alert("Something went wrong");
+
+alert("Order failed");
 
 
 }

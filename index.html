@@ -1,165 +1,399 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Growth Lab</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-<!-- floating background -->
+
 <div class="blobs">
-  <span></span>
-  <span></span>
-  <span></span>
+
+<span></span>
+<span></span>
+<span></span>
+
 </div>
 
+
+
+
 <nav>
-    <div class="logo">GROWTH LAB</div>
 
-    <a href="login.html" class="login-btn" id="loginBtn">
-        Login
-    </a>
 
-    <a href="dashboard.html" id="profileBtn" style="display:none;">
-        <img id="profilePic"
-             src="https://via.placeholder.com/45"
-             alt="Profile"
-             style="
-                width:45px;
-                height:45px;
-                border-radius:50%;
-                object-fit:cover;
-                border:2px solid rgba(255,255,255,.2);
-             ">
-    </a>
+<div class="logo">
+GROWTH LAB
+</div>
+
+
+
+<a href="login.html" class="login-btn" id="loginBtn">
+Login
+</a>
+
+
+
+<a href="dashboard.html" id="profileBtn" style="display:none;">
+
+<img 
+id="profilePic"
+src="https://via.placeholder.com/45"
+alt="Profile"
+style="
+width:45px;
+height:45px;
+border-radius:50%;
+object-fit:cover;
+border:2px solid rgba(255,255,255,.2);
+">
+
+</a>
+
 
 </nav>
 
+
+
+
+
 <section class="hero reveal">
-    <h1>GROWTH LAB</h1>
 
-    <p>
-        Instagram Marketing Solutions For Creators,
-        Influencers & Businesses.
-    </p>
 
-    <a href="https://forms.gle/oPAAeAhKmEnXwZ6n7" target="_blank">
-        <button>Order Now 🚀</button>
-    </a>
+<h1>
+GROWTH LAB
+</h1>
+
+
+
+<p>
+
+Instagram Growth Solutions For Creators,
+Influencers & Businesses.
+
+</p>
+
+
+
+<a href="place-order.html">
+
+<button>
+Order Now 🚀
+</button>
+
+</a>
+
+
 </section>
+
+
+
+
+
 
 <section id="services" class="reveal">
 
-    <h2>Our Services</h2>
 
-    <div class="cards">
+<h2>
+Our Services
+</h2>
 
-        <div class="card">
-            <h3>Instagram Promotion</h3>
-            <p>Increase visibility and reach.</p>
-        </div>
 
-        <div class="card">
-            <h3>Content Marketing</h3>
-            <p>Help your content get discovered.</p>
-        </div>
 
-        <div class="card">
-            <h3>Brand Growth</h3>
-            <p>Build a stronger online presence.</p>
-        </div>
+<div class="cards">
 
-    </div>
+
+
+<div class="card">
+
+<h3>
+Followers 📈
+</h3>
+
+<p>
+Grow your Instagram audience.
+</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>
+Views 👁️
+</h3>
+
+<p>
+Increase content reach and visibility.
+</p>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h3>
+Likes ❤️
+</h3>
+
+<p>
+Boost engagement on your posts.
+</p>
+
+</div>
+
+
+
+</div>
+
 
 </section>
+
+
+
+
+
+
 
 <section id="payment" class="reveal">
 
-    <h2>💳 Payment</h2>
 
-    <div class="payment-card">
+<h2>
+💳 Payment
+</h2>
 
-        <img src="qr.png" alt="Payment QR" class="qr">
 
-        <p class="pay-text">Scan the QR code and complete payment.</p>
-         <p class="pay-text">After payment send us the screen shot on Instagram</p>
-        <a href="https://instagram.com/growth.lab07" target="_blank">
-            <button>DM On Instagram 📩</button>
-        </a>
-      
-    </div>
+
+<div class="payment-card">
+
+
+
+<img 
+src="qr.png"
+alt="Payment QR"
+class="qr"
+>
+
+
+
+
+<p class="pay-text">
+
+Scan the QR code and complete payment.
+
+</p>
+
+
+<p class="pay-text">
+
+After payment send the screenshot on Instagram.
+
+</p>
+
+
+
+
+<a href="https://instagram.com/growth.lab07" target="_blank">
+
+<button>
+DM On Instagram 📩
+</button>
+
+</a>
+
+
+
+</div>
+
 
 </section>
+
+
+
+
+
+
+
 
 <section id="contact" class="reveal">
 
-    <h2>Place Your Order</h2>
 
-    <a href="https://forms.gle/oPAAeAhKmEnXwZ6n7" target="_blank">
-        <button>Open Order Form</button>
-    </a>
+<h2>
+Place Your Order
+</h2>
+
+
+
+<a href="place-order.html">
+
+<button>
+Create Order 🚀
+</button>
+
+</a>
+
+
 
 </section>
-  <p class="trust-text">
-Need a custom package?<br>
+
+
+
+
+
+<p class="trust-text">
+
+Need a custom package?
+
+<br>
+
 DM @growth.lab07 on Instagram
-  </p>
+
+</p>
+
+
+
+
+
+
 <footer>
-    © 2026 Growth Lab
+
+© 2026 Growth Lab
+
 </footer>
+
+
+
+
+
+
 
 <script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+
 
 import {
+
 getAuth,
+
 onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+}
+
+from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+
+
+
 
 const firebaseConfig = {
+
+
 apiKey:"AIzaSyCG1VbOlKKc_bcBgnYqXptjjPFQj5HRRqQ",
+
 authDomain:"growth-lab-001.firebaseapp.com",
+
 projectId:"growth-lab-001",
+
 storageBucket:"growth-lab-001.firebasestorage.app",
+
 messagingSenderId:"1056072903285",
+
 appId:"1:1056072903285:web:0d8803782792362b56a63c",
+
 measurementId:"G-91ZPNR8HL4"
+
 };
 
-const app=initializeApp(firebaseConfig);
-const auth=getAuth(app);
 
-const loginBtn=document.getElementById("loginBtn");
-const profileBtn=document.getElementById("profileBtn");
-const profilePic=document.getElementById("profilePic");
+
+
+
+const app = initializeApp(firebaseConfig);
+
+
+const auth = getAuth(app);
+
+
+
+
+const loginBtn =
+document.getElementById("loginBtn");
+
+
+const profileBtn =
+document.getElementById("profileBtn");
+
+
+const profilePic =
+document.getElementById("profilePic");
+
+
+
+
 
 onAuthStateChanged(auth,(user)=>{
 
+
 if(user){
 
+
 loginBtn.style.display="none";
+
+
 profileBtn.style.display="block";
 
+
+
 if(user.photoURL){
+
 profilePic.src=user.photoURL;
+
 }
 
-}else{
+
+
+}
+
+else{
+
 
 loginBtn.style.display="block";
+
+
 profileBtn.style.display="none";
 
+
 }
+
 
 });
 
+
+
 </script>
 
+
+
+
 <script src="script.js"></script>
-  
+
+
 </body>
+
 </html>

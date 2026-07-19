@@ -1,239 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Track Orders - Growth Lab</title>
+<title>Track Order | Growth Lab</title>
 
 <style>
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    -webkit-tap-highlight-color:transparent;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 }
 
 body{
-    background:linear-gradient(135deg,#0f0f10,#181818,#101114);
-    background-size:400% 400%;
-    animation:bgFlow 15s ease infinite;
-    color:white;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
+
+min-height:100vh;
+
+background:linear-gradient(135deg,#0f0f10,#181818,#101114);
+
+color:white;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:20px;
+
 }
 
-@keyframes bgFlow{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+
+.container{
+
+width:100%;
+
+max-width:430px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.12);
+
+padding:30px;
+
+border-radius:28px;
+
 }
 
-.card{
-    width:100%;
-    max-width:430px;
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:25px;
-    padding:30px;
-}
+
 
 h1{
-    text-align:center;
-    margin-bottom:25px;
-    font-size:30px;
+
+text-align:center;
+
+margin-bottom:20px;
+
 }
 
-.info{
-    background:rgba(255,255,255,.05);
-    border-radius:18px;
-    padding:18px;
-    margin-bottom:25px;
+
+
+input{
+
+width:100%;
+
+padding:14px;
+
+border-radius:15px;
+
+border:1px solid rgba(255,255,255,.15);
+
+background:rgba(255,255,255,.08);
+
+color:white;
+
+outline:none;
+
 }
 
-.row{
-    display:flex;
-    justify-content:space-between;
-    margin:12px 0;
+
+
+button{
+
+width:100%;
+
+margin-top:20px;
+
+padding:15px;
+
+border:none;
+
+border-radius:25px;
+
+background:white;
+
+color:#111;
+
+font-weight:700;
+
 }
 
-.label{
-    color:#aaa;
+
+
+.result{
+
+margin-top:25px;
+
+padding:20px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,.08);
+
+display:none;
+
 }
 
-.value{
-    font-weight:bold;
+
+
+p{
+
+margin:10px 0;
+
+color:#ccc;
+
 }
 
-.progress-title{
-    margin-bottom:20px;
-    font-size:22px;
-}
 
-.timeline{
-    position:relative;
-    margin-left:18px;
-}
-
-.timeline::before{
-    content:"";
-    position:absolute;
-    left:11px;
-    top:0;
-    width:3px;
-    height:100%;
-    background:rgba(255,255,255,.12);
-}
-
-.step{
-    position:relative;
-    padding-left:40px;
-    margin-bottom:35px;
-}
-
-.circle{
-    position:absolute;
-    left:0;
-    width:25px;
-    height:25px;
-    border-radius:50%;
-    background:#555;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:13px;
-    z-index:2;
-}
-
-.completed .circle{
-    background:#22c55e;
-}
-
-.active .circle{
-    background:#facc15;
-    color:#111;
-}
-
-.completed h3,
-.active h3{
-    color:white;
-}
-
-.step h3{
-    font-size:18px;
-}
-
-.step p{
-    color:#aaa;
-    margin-top:4px;
-    font-size:14px;
-}
-
-.note{
-    margin-top:20px;
-    color:#bbb;
-    text-align:center;
-}
-
-.btn{
-    display:block;
-    width:100%;
-    margin-top:18px;
-    padding:16px;
-    border-radius:50px;
-    text-align:center;
-    text-decoration:none;
-    color:white;
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.08);
-    transition:.25s;
-}
-
-.btn:hover{
-    background:rgba(255,255,255,.14);
-}
 </style>
 
 </head>
 
+
 <body>
 
-<div class="card">
 
-<h1>📦 Track Order</h1>
+<div class="container">
 
-<div class="info">
 
-<div class="row">
-<span class="label">Order ID</span>
-<span class="value">GL-2026-001</span>
-</div>
+<h1>
+Track Order 📦
+</h1>
 
-<div class="row">
-<span class="label">Service</span>
-<span class="value">Instagram Followers</span>
-</div>
 
-<div class="row">
-<span class="label">Quantity</span>
-<span class="value">1000</span>
-</div>
+<input id="orderID" placeholder="Enter Order ID">
 
-<div class="row">
-<span class="label">Estimated Time</span>
-<span class="value">12–24 Hours</span>
-</div>
 
-</div>
+<button onclick="trackOrder()">
 
-<h2 class="progress-title">Order Progress</h2>
+Track Order
 
-<div class="timeline">
+</button>
 
-<div class="step completed">
-<div class="circle">✓</div>
-<h3>Payment Received</h3>
-<p>Your payment has been verified.</p>
-</div>
 
-<div class="step active">
-<div class="circle">●</div>
-<h3>Order Processing</h3>
-<p>We're currently processing your order.</p>
-</div>
+<div class="result" id="result">
 
-<div class="step">
-<div class="circle"></div>
-<h3>Delivery</h3>
-<p>Your order will start delivering soon.</p>
-</div>
+<p id="username"></p>
 
-<div class="step">
-<div class="circle"></div>
-<h3>Completed</h3>
-<p>Your order has been completed successfully.</p>
-</div>
+<p id="service"></p>
+
+<p id="package"></p>
+
+<p id="status"></p>
 
 </div>
 
-<p class="note">
-Need help with your order?
-</p>
-
-<a href="https://instagram.com/growth.lab07" target="_blank" class="btn">
-📩 Contact on Instagram
-</a>
-
-<a href="dashboard.html" class="btn">
-⬅ Back to Dashboard
-</a>
 
 </div>
+
+
+
+<script type="module">
+
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+
+
+import { getFirestore, doc, getDoc }
+from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+
+
+const firebaseConfig = {
+
+apiKey:"AIzaSyCG1VbOlKKc_bcBgnYqXptjjPFQj5HRRqQ",
+
+authDomain:"growth-lab-001.firebaseapp.com",
+
+projectId:"growth-lab-001",
+
+storageBucket:"growth-lab-001.firebasestorage.app",
+
+messagingSenderId:"1056072903285",
+
+appId:"1:1056072903285:web:0d8803782792362b56a63c",
+
+measurementId:"G-91ZPNR8HL4"
+
+};
+
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+
+window.trackOrder = async function(){
+
+
+let id =
+document.getElementById("orderID").value.trim();
+
+
+if(id==""){
+
+alert("Enter Order ID");
+
+return;
+
+}
+
+
+
+const snap = await getDoc(doc(db,"orders",id));
+
+
+
+if(snap.exists()){
+
+
+let data=snap.data();
+
+
+document.getElementById("result").style.display="block";
+
+
+document.getElementById("username").innerHTML =
+"Username: "+data.username;
+
+
+document.getElementById("service").innerHTML =
+"Service: "+data.service;
+
+
+document.getElementById("package").innerHTML =
+"Package: "+data.package;
+
+
+document.getElementById("status").innerHTML =
+"Status: "+data.status;
+
+
+
+}
+
+else{
+
+
+alert("Order not found");
+
+}
+
+
+
+}
+
+
+</script>
+
 
 </body>
+
 </html>
