@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Payments - Growth Lab</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    -webkit-tap-highlight-color:transparent;
+}
+
+body{
+    background:linear-gradient(135deg,#0f0f10,#181818,#101114);
+    background-size:400% 400%;
+    animation:bgFlow 15s ease infinite;
+    color:white;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+@keyframes bgFlow{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.card{
+    width:100%;
+    max-width:430px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:25px;
+    padding:30px;
+    text-align:center;
+}
+
+h1{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#bbb;
+    margin-bottom:25px;
+}
+
+.qr{
+    width:230px;
+    max-width:100%;
+    border-radius:20px;
+    background:white;
+    padding:10px;
+    margin-bottom:25px;
+}
+
+.instructions{
+    text-align:left;
+    color:#ddd;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.note{
+    color:#999;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+.btn{
+    display:block;
+    width:100%;
+    text-decoration:none;
+    padding:16px;
+    border-radius:50px;
+    margin-top:15px;
+    color:white;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.08);
+    transition:.25s;
+}
+
+.btn:hover{
+    background:rgba(255,255,255,.15);
+}
+
+.back{
+    background:rgba(255,255,255,.05);
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>💳 Payments</h1>
+
+<p class="subtitle">
+Scan the QR code below to complete your payment.
+</p>
+
+<img src="qr.png" class="qr" alt="QR Code">
+
+<div class="instructions">
+
+✅ Scan the QR code using any UPI app.<br><br>
+
+✅ Complete the payment.<br><br>
+
+✅ Take a screenshot of the successful payment.<br><br>
+
+✅ Send the screenshot to our Instagram along with your order details.
+
+</div>
+
+<p class="note">
+Your order will be processed after payment verification.
+</p>
+
+<a href="https://instagram.com/growth.lab07" target="_blank" class="btn">
+📩 Send Screenshot on Instagram
+</a>
+
+<a href="dashboard.html" class="btn back">
+⬅ Back to Dashboard
+</a>
+
+</div>
+
+</body>
+</html>
