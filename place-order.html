@@ -92,7 +92,6 @@ h1{
 }
 
 
-
 .subtitle{
 
     text-align:center;
@@ -201,7 +200,6 @@ button:hover{
 }
 
 
-
 .back a{
 
     color:#bbb;
@@ -240,10 +238,12 @@ Instagram Username / Link
 </label>
 
 
-<input
+<input 
 id="username"
 type="text"
 placeholder="@username">
+
+
 
 
 
@@ -258,20 +258,24 @@ Select Service
 Choose Service
 </option>
 
-<option value="Followers 📈">
+
+<option value="Followers">
 Followers 📈
 </option>
 
-<option value="Views 👁️">
+
+<option value="Views">
 Views 👁️
 </option>
 
-<option value="Likes ❤️">
+
+<option value="Likes">
 Likes ❤️
 </option>
 
 
 </select>
+
 
 
 
@@ -293,6 +297,7 @@ Select Package
 
 
 
+
 <button onclick="submitOrder()">
 
 Submit Order 🚀
@@ -301,10 +306,14 @@ Submit Order 🚀
 
 
 
+
+
 <div class="back">
 
 <a href="dashboard.html">
+
 ← Back to Dashboard
+
 </a>
 
 </div>
@@ -313,39 +322,71 @@ Submit Order 🚀
 </div>
 
 
+
+
+
+
 <script>
+
 
 const packages = {
 
-"Followers 📈":[
+
+Followers:[
+
 "10 Followers | ₹2 (Demo)",
+
 "100 Followers | ₹19",
+
 "500 Followers | ₹79",
+
 "1000 Followers | ₹149",
+
 "5000 Followers | ₹799"
+
 ],
 
-"Views 👁️":[
+
+
+Views:[
+
 "100 Views | ₹2 (Demo)",
+
 "1000 Views | ₹9",
+
 "10,000 Views | ₹50",
+
 "100,000 Views | ₹69",
+
 "1,000,000 Views | ₹699"
+
 ],
 
-"Likes ❤️":[
+
+
+Likes:[
+
 "100 Likes | ₹5 (Demo)",
+
 "500 Likes | ₹29",
+
 "1000 Likes | ₹49",
+
 "5000 Likes | ₹149",
+
 "10,000 Likes"
+
 ]
+
 
 };
 
 
 
+
+
 function updatePackages(){
+
 
 let service =
 document.getElementById("service").value;
@@ -355,8 +396,10 @@ let packageBox =
 document.getElementById("package");
 
 
+
 packageBox.innerHTML =
 "<option>Select Package</option>";
+
 
 
 if(packages[service]){
@@ -380,12 +423,16 @@ packageBox.appendChild(option);
 
 }
 
+
 }
 
 
 
 
+
+
 function submitOrder(){
+
 
 let username =
 document.getElementById("username").value.trim();
@@ -402,20 +449,28 @@ document.getElementById("package").value;
 
 if(username=="" || service=="" || packageName=="Select Package"){
 
+
 alert("Please fill all details");
 
 return;
+
 
 }
 
 
 
+
+
 let formURL =
+
 "https://docs.google.com/forms/d/e/1FAIpQLSf6UXG6zSJKB1rBUXnJ-4YYv8AWhf0ADEf9ckW0TIGRWSF0Cg/formResponse";
 
 
 
+
+
 let formData = new FormData();
+
 
 
 
@@ -425,22 +480,28 @@ username
 );
 
 
+
 formData.append(
 "entry.497299402",
 "Instagram"
 );
 
 
+
 formData.append(
-"entry.1565986802",
+"entry.12152582",
 service
 );
 
 
+
 formData.append(
-"entry.368172193",
+"entry.1186275793",
 packageName
 );
+
+
+
 
 
 
@@ -456,6 +517,8 @@ body:formData
 
 
 
+
+
 alert("Order placed successfully 🚀");
 
 
@@ -463,11 +526,12 @@ alert("Order placed successfully 🚀");
 window.location.href="track.html";
 
 
+
 }
 
 
-
 </script>
+
 
 
 </body>
