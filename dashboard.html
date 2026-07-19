@@ -7,6 +7,7 @@
 <title>Growth Lab Dashboard</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -24,16 +25,29 @@ body{
     padding:20px;
 }
 
+
 @keyframes bgFlow{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
 }
+
 
 .container{
     max-width:450px;
     margin:auto;
 }
+
 
 .header{
     display:flex;
@@ -42,10 +56,12 @@ body{
     margin-bottom:30px;
 }
 
+
 .logo{
     font-size:28px;
     font-weight:700;
 }
+
 
 .profile{
     width:45px;
@@ -58,206 +74,284 @@ body{
     font-size:22px;
 }
 
+
 .welcome{
-    margin-bottom:25px;
+    margin-bottom:35px;
 }
+
 
 .welcome h2{
     font-size:32px;
 }
+
 
 .welcome p{
     color:#bbb;
     margin-top:5px;
 }
 
-.stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-    margin-bottom:30px;
-}
 
-.stat-card{
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:20px;
-    padding:20px;
-    text-align:center;
-}
-
-.stat-card h3{
-    font-size:30px;
-    margin-bottom:8px;
-}
-
-.stat-card p{
-    color:#bbb;
-    font-size:14px;
-}
+/* QUICK ACTIONS */
 
 .section-title{
     margin:20px 0 15px;
     font-size:22px;
 }
 
+
 .action{
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:18px 20px;
+
     background:rgba(255,255,255,.08);
+
     border:1px solid rgba(255,255,255,.08);
+
     backdrop-filter:blur(20px);
+
     border-radius:18px;
+
     margin-bottom:15px;
+
     text-decoration:none;
+
     color:#fff;
+
     transition:.3s;
+
 }
+
 
 .action:hover{
+
     transform:translateY(-3px);
+
     background:rgba(255,255,255,.12);
+
 }
 
-.activity{
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(20px);
-    border-radius:20px;
-    padding:20px;
-    color:#bbb;
-    margin-top:15px;
-}
+
+/* LOGOUT */
+
 
 .logout{
+
     display:block;
+
     width:100%;
-    margin-top:35px;
+
+    margin-top:100px;
+
     padding:16px;
+
     text-align:center;
+
     text-decoration:none;
+
     color:white;
+
     border-radius:50px;
+
     background:rgba(255,0,0,.25);
+
     backdrop-filter:blur(20px);
+
     border:1px solid rgba(255,0,0,.25);
+
     transition:.3s;
+
 }
 
+
 .logout:hover{
+
     background:rgba(255,0,0,.35);
+
 }
+
+
 </style>
+
 </head>
 
 <body>
 
+
 <div class="container">
 
+
 <div class="header">
-<div class="logo">Growth Lab</div>
-<div class="profile">👤</div>
+
+<div class="logo">
+Growth Lab
 </div>
+
+
+<div class="profile">
+👤
+</div>
+
+
+</div>
+
+
 
 <div class="welcome">
-<h2>Welcome Back 👋</h2>
-<p>Manage your social growth from one place.</p>
-</div>
 
-<div class="stats">
+<h2>
+Welcome Back 👋
+</h2>
 
-<div class="stat-card">
-<h3>0</h3>
-<p>Orders</p>
-</div>
-
-<div class="stat-card">
-<h3>0</h3>
-<p>Pending</p>
-</div>
-
-<div class="stat-card">
-<h3>0</h3>
-<p>Completed</p>
-</div>
+<p>
+Manage your social growth from one place.
+</p>
 
 </div>
 
-<h3 class="section-title">Quick Actions</h3>
+
+
+<h3 class="section-title">
+Quick Actions
+</h3>
+
+
 
 <a href="place-order.html" class="action">
-<span>🛒 Place New Order</span>
-<span>›</span>
+
+<span>
+🛒 Place New Order
+</span>
+
+<span>
+›
+</span>
+
 </a>
+
+
 
 <a href="track.html" class="action">
-<span>📦 Track Orders</span>
-<span>›</span>
+
+<span>
+📦 Track Orders
+</span>
+
+<span>
+›
+</span>
+
 </a>
+
+
 
 <a href="payment.html" class="action">
-<span>💳 Payments</span>
-<span>›</span>
+
+<span>
+💳 Payments
+</span>
+
+<span>
+›
+</span>
+
 </a>
+
+
 
 <a href="profile.html" class="action">
-<span>⚙️ Profile</span>
-<span>›</span>
+
+<span>
+⚙️ Profile
+</span>
+
+<span>
+›
+</span>
+
 </a>
 
-<h3 class="section-title">Recent Activity</h3>
-
-<div class="activity">
-No orders yet.
-</div>
 
 <a href="#" id="logoutBtn" class="logout">
 Logout
 </a>
 
+
+
 </div>
 
+
+
 <script type="module">
+
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
+
+
 const firebaseConfig = {
+
 apiKey:"AIzaSyCG1VbOlKKc_bcBgnYqXptjjPFQj5HRRqQ",
+
 authDomain:"growth-lab-001.firebaseapp.com",
+
 projectId:"growth-lab-001",
+
 storageBucket:"growth-lab-001.firebasestorage.app",
+
 messagingSenderId:"1056072903285",
+
 appId:"1:1056072903285:web:0d8803782792362b56a63c",
+
 measurementId:"G-91ZPNR8HL4"
+
 };
 
+
+
 const app = initializeApp(firebaseConfig);
+
 const auth = getAuth(app);
+
+
 
 document.getElementById("logoutBtn").addEventListener("click", async(e)=>{
 
+
 e.preventDefault();
+
 
 try{
 
+
 await signOut(auth);
+
 
 window.location.href="login.html";
 
-}catch(error){
-
-alert("Logout failed: "+error.message);
 
 }
 
+catch(error){
+
+
+alert("Logout failed: "+error.message);
+
+
+}
+
+
 });
+
 
 </script>
 
+
 </body>
+
 </html>
