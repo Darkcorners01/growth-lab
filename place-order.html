@@ -516,10 +516,8 @@ const orderID =
 
 const user = auth.currentUser;
 
-console.log(user);
-
 if (!user) {
-    alert("No user is logged in!");
+    alert("Please log in again.");
     return;
 }
 
